@@ -1,0 +1,6 @@
+# Install after requirements.txt. MMCV needs compiled ops matching PyTorch/CUDA.
+# This file records the tested versions; it does not provision a CUDA toolchain.
+mmpose==1.3.2
+mmdet==3.3.0
+mmengine==0.10.7
+mmcv==2.1.0

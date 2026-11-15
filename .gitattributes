@@ -1,0 +1,10 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+# Audit CSV hashes are byte-sensitive; preserve their original line endings.
+*.csv -text whitespace=cr-at-eol
+*.svg text eol=lf -whitespace
+*.png binary
+*.pdf binary

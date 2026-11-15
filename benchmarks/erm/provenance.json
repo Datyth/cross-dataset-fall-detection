@@ -1,0 +1,125 @@
+{
+  "protocol": "e1-v1",
+  "method": "erm",
+  "status": "verified_saved_predictions",
+  "verification_date": "2026-11-15",
+  "description": "ERM-only snapshot from existing real-data experiments; no retraining or new target inference during repository preparation.",
+  "verification": "Recomputed F1 and average precision from saved predictions; every ERM checkpoint SHA-256 matched run provenance and prediction rows.",
+  "source_artifacts_sha256": {
+    "metrics.csv": "726062012ff2c569b6a0cfb1da862318269d796fdb03b330b8026e03c3ceff47",
+    "predictions.csv": "dd1c1ee19483feca6a3c77aabd3dce7971e60a173a19bc4b57c3188f06f9d68b"
+  },
+  "bundled_artifacts_sha256": {
+    "data/manifest.csv": "f933879456cb414d5704f41810f840e97885dc6e6d2b2b758e61e436a1b957d1",
+    "data/splits.json": "eec74006e99cebfa27692e4093f9bca875a7810f3cd173f1244941dd57b7d8cb",
+    "benchmarks/erm/metrics.csv": "b8bd8ae117a2bb1c68e33d6fcd6a7f988566b67358d0357aea9b7249a20cab3c",
+    "benchmarks/erm/predictions.csv": "43fe4640e44b3a70e78b239210ac660e440f401dfbf1e62b1f66ebc8e198e556",
+    "benchmarks/erm/environment.json": "2a2d356e5ba9e68d750e9c6c348c26cce8df83eb5fda2449cf41a11ef80956ce",
+    "config.yaml": "655f4d946fb40d31a616410cd61e686481eaeb28036feea3d06344e80710299e"
+  },
+  "runs": [
+    {
+      "fold": "caucafall",
+      "seed": 42,
+      "checkpoint_sha256": "6fdbf88e781b56ad8dd8a750e4ff0891deb9e9a29bf69a59c39322e3b6e153d4",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "caucafall",
+      "seed": 123,
+      "checkpoint_sha256": "164b9981db4fa3b942d80368810fd59e10214582d8398f8a6b05ef23b7591b48",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "caucafall",
+      "seed": 2026,
+      "checkpoint_sha256": "986cc8741131d8f2c250e924c0af5b4252c6ae28bd3f1851cfc20ddf2dea8e40",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "gmdcsa24",
+      "seed": 42,
+      "checkpoint_sha256": "85810151b9de13b7de0a08b50afa3ea2b972709ae8307e257440cd85e9ddf989",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "gmdcsa24",
+      "seed": 123,
+      "checkpoint_sha256": "af97f2b55b490c7c0e31768db59ad10a7daf45a0edd668e674f02f8338d641bc",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "gmdcsa24",
+      "seed": 2026,
+      "checkpoint_sha256": "dfbd76df1f0cc1ebbe10a747069a38991ee4a2e0cd5c595c5353bd18209e9312",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "le2i",
+      "seed": 42,
+      "checkpoint_sha256": "0f68ed53389ec4aef83dc0f3b07bf4f2182da36604d6e3d767fc2bdb34a8da95",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "le2i",
+      "seed": 123,
+      "checkpoint_sha256": "0317002d1dd922ff6da9e731f090fd10e7ae7102fb7df49c1fef9b1ad7beef30",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "le2i",
+      "seed": 2026,
+      "checkpoint_sha256": "34f803e04f642bdc266523a61c627d7dfabf72bfa3c0f7967726a3b12d93f95b",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "urfd",
+      "seed": 42,
+      "checkpoint_sha256": "18921208d36207a675651ffe03feff923ca3118e104a14b648de6316a0aec9ff",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "urfd",
+      "seed": 123,
+      "checkpoint_sha256": "bdc9af7f057769f5c57320d6b12c52fe2db38383b5e89e13991b67182c848426",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    },
+    {
+      "fold": "urfd",
+      "seed": 2026,
+      "checkpoint_sha256": "069313d00e0c9007a1381eb047dd04da9aceb0ae83e2ac8bcaf3d846f70994f8",
+      "implementation_hash": "ec05d92c6223f1e8d802797a1909c2916fc00c7c528b88b474d929a545cd7ed5",
+      "config_hash": "146a1c68af67d2c252b0d3be9e6e68345a7365310784251d9136360d38a692f2",
+      "split_hash": "0d33ffcf602671ab0686891bc08910df0aadaea09738556ae41231d1766c2261"
+    }
+  ],
+  "excluded_swad": {
+    "reason": "Legacy averaging double-counted a convergence segment; saved aggregate report predates completed v2 repair.",
+    "v2_repaired_runs": 2,
+    "legacy_runs_remaining": 10,
+    "results_included": false
+  },
+  "checkpoints_included": false
+}

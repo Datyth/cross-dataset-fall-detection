@@ -1,0 +1,59 @@
+paths:
+  data: data
+  results: results
+datasets:
+  caucafall:
+    version: zenodo-17170592-reconstructed-clips
+    url: https://zenodo.org/records/17170592
+  gmdcsa24:
+    version: zenodo-13354453-v2.1
+    url: https://zenodo.org/records/13354453
+  le2i:
+    version: zenodo-17170592-190-reconstructed-clips
+    url: https://zenodo.org/records/17170592
+  urfd:
+    version: official-cam0
+    url: https://fenix.ur.edu.pl/~mkepski/ds/uf.html
+pose:
+  detector_config: rtmdet_m_8xb32-300e_coco
+  detector_checkpoint: https://download.openmmlab.com/mmdetection/v3.0/rtmdet/rtmdet_m_8xb32-300e_coco/rtmdet_m_8xb32-300e_coco_20220719_112220-229f527c.pth
+  pose_config: rtmpose-m_8xb256-420e_aic-coco-256x192
+  pose_checkpoint: https://download.openmmlab.com/mmpose/v1/projects/rtmposev1/rtmpose-m_simcc-aic-coco_pt-aic-coco_420e-256x192-63eb25f7_20230126.pth
+  detector_score_threshold: 0.3
+  score_threshold: 0.1
+  max_track_gap: 10
+  inference_batch: 2
+preprocess:
+  fps: 15
+  timestamp_tolerance_s: 0.04
+  window_frames: 64
+  stride_frames: 32
+model:
+  base_channels: 64
+  dropout: 0.0
+  classifier_init_std: 0.01
+train:
+  seeds: [42, 123, 2026]
+  split_seed: 2026
+  val_fraction: 0.2
+  max_epochs: 150
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  videos_per_batch: 64
+  gradient_accumulation: 1
+  window_chunk: 32
+  bn_calibration_batch_size: 32
+  bn_calibration_seed: 2026
+  grad_clip: 1.0
+  patience_after_swad_convergence: 25
+  device: cuda
+swad:
+  n_converge: 3
+  n_tolerance: 6
+  tolerance_ratio: 0.3
+  validation_interval_epochs: 1
+evaluation:
+  protocol_version: e1-v1
+  threshold_grid: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95]
+  bootstrap_resamples: 1000
+  bootstrap_seed: 2026

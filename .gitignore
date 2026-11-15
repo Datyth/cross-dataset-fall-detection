@@ -1,0 +1,63 @@
+# Original workspace folders: the standalone project lives at the repository root.
+/app/
+/research/
+/figures4papers/
+
+# Keep only lightweight, frozen audit metadata from the data directory.
+/data/*
+!/data/manifest.csv
+!/data/splits.json
+/results/
+/dist/
+/docs/figures/*.pdf
+/docs/figures/*.svg
+
+# Local environments, caches, build outputs and editor state.
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+*.egg-info/
+.ipynb_checkpoints/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# Credentials and machine-specific configuration.
+.env
+.env.*
+!.env.example
+.aws/
+.ssh/
+.codex/
+.agents/
+*.pem
+*.key
+credentials.json
+
+# Model weights, pose caches, videos and downloaded archives.
+*.pt
+*.pth
+*.onnx
+*.npz
+*.npy
+*.pkl
+*.mp4
+*.avi
+*.mkv
+*.mov
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
