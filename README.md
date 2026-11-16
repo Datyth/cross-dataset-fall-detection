@@ -39,6 +39,14 @@ Inspect the [per-seed metrics](benchmarks/erm/metrics.csv), [1,560 video predict
 
 **SWAD status:** the implementation includes a version-2 averaging correction. At packaging time, 2 of 12 saved SWAD runs had been repaired; the other 10 and the aggregate report still needed updating. SWAD scores are therefore excluded from this snapshot.
 
+## Research idea
+
+We are testing whether learning to predict **future skeleton motion** helps the fall detector work on unseen datasets. The main CTR-GCN still classifies a whole video from its 64-frame windows. During training, a second branch takes the first 48 frames, predicts a representation of the last 16 frames, and compares it with a slowly updated EMA encoder. It also checks whether the prediction stays similar after small pose noise and joint dropout. **P3** uses future prediction; **P4** adds this consistency check. At inference, only the video classifier runs; it needs neither the prediction branch nor the EMA encoder.
+
+![PDI research architecture: video classification above and a training-only future representation branch below](docs/figures/pdi_architecture.png)
+
+This is a research hypothesis, not a reported improvement yet. The first paired P3/P4 experiment is queued after E2; it will test whether the extra consistency loss helps on CAUCAFall with one seed.
+
 ## Quick start
 
 Use **Python 3.11**. The CPU checks below run without downloading datasets, model weights or the pose stack.
@@ -118,9 +126,10 @@ Downloaded data, skeleton caches, checkpoints and generated training reports are
 
 ```bash
 python scripts/make_figures.py
+python scripts/make_pdi_figure.py
 ```
 
-Both figures are generated from the bundled audit metadata and ERM metrics, with PNG, PDF and SVG exports. The plotting script follows Chen Liu's [Figures for Papers](https://github.com/ChenLiu-1996/figures4papers) scientific-figure-making conventions: publication typography, semantic palette, clean axes and 300 dpi export. Its source checkout is unnecessary to regenerate the figures.
+The pipeline and benchmark figures use bundled audit metadata and ERM metrics; the PDI figure depicts the research architecture. The scripts export PNG, PDF and SVG using Chen Liu's [Figures for Papers](https://github.com/ChenLiu-1996/figures4papers) conventions: publication typography, semantic palette, clean axes and 300 dpi export. Its source checkout is unnecessary to regenerate the figures.
 
 ## References and attribution
 

@@ -11,6 +11,8 @@
 /dist/
 /docs/figures/*.pdf
 /docs/figures/*.svg
+!/docs/figures/pdi_architecture.pdf
+!/docs/figures/pdi_architecture.svg
 
 # Local environments, caches, build outputs and editor state.
 .venv/
