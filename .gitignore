@@ -8,6 +8,9 @@
 !/data/manifest.csv
 !/data/splits.json
 /results/
+/local_app/
+/.runtime-cache/
+/.baseline-runtime.json
 /dist/
 /docs/figures/*.pdf
 /docs/figures/*.svg

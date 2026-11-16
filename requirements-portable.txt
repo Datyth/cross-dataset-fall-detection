@@ -1,0 +1,4 @@
+# Optional CPU pose engine for video uploads without MMCV's compiled ops.
+# Different exports from the research benchmark; results carry this provenance.
+rtmlib==0.0.16
+onnxruntime==1.23.2

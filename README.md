@@ -49,6 +49,21 @@ This is a research hypothesis, not a reported improvement yet. The first paired 
 
 ## Quick start
 
+### Local review app
+
+On Windows with Ubuntu/WSL installed, place `best_erm.pt` in `results/runs/urfd_2026/` and the original RTMDet/RTMPose `.pth` files in `data/model_weights/`. Model files remain local and are excluded from Git. From the project folder:
+
+```powershell
+.\setup-baseline.cmd   # First installation only; already completed on this PC.
+.\start-baseline.cmd
+```
+
+Open **http://127.0.0.1:8000** for recording analysis, saved history and benchmark review. New analyses use the original **RTMDet-m + RTMPose-m AIC/COCO** weights and the verified URFD/2026 ERM checkpoint with its saved **0.20** threshold. The app checks runtime versions, compiled MMCV operations and pose-weight hashes. It does not fall back to ONNX. Legacy SWAD remains disabled.
+
+Refresh with **Ctrl+F5** after updates. CPU analysis takes minutes per clip; if closing VS Code stops the app, run `start-baseline.cmd` again. See [local baseline setup](docs/BASELINE_LOCAL.md) and [app behavior and limitations](docs/APP.md).
+
+### Research CLI
+
 Use **Python 3.11**. The CPU checks below run without downloading datasets, model weights or the pose stack.
 
 ```bash

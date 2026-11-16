@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f8">
+  <meta name="description" content="A local workspace for skeleton-based fall detection and recording review.">
+  <title>Fall Review · Recording analysis</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <aside class="sidebar">
+    <a class="brand" href="#analyze" aria-label="Fall Review home"><span class="brand-mark">fr<span>.</span></span><span>Fall Review<small>RESEARCH WORKSPACE</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav aria-label="Primary navigation">
+      <a href="#analyze" data-nav="analyze"><span data-icon="scan"></span>Analyze<span class="nav-number">01</span></a>
+      <a href="#history" data-nav="history"><span data-icon="history"></span>History<span class="nav-number">02</span></a>
+      <a href="#benchmark" data-nav="benchmark"><span data-icon="chart"></span>Benchmark<span class="nav-number">03</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tiny-label">THE PIPELINE</span><p>Video to skeleton.<br>Motion to insight.</p><div class="pipeline-tags"><span>COCO-17</span><span>CTR-GCN</span></div></div>
+    <button class="runtime-card" data-action="runtime"><span class="status-dot amber" id="runtime-dot"></span><span id="runtime-summary">Checking environment<small>Local processing</small></span><span data-icon="arrow"></span></button>
+    <div class="sidebar-footer">Cross-dataset fall detection<span>Local workspace · v1.0</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div class="breadcrumb">Workspace<span>/</span><strong id="breadcrumb">Analyze</strong></div><div class="local-indicator"><span class="status-dot"></span>On this device<button class="icon-button" data-action="runtime" aria-label="Environment and model details" data-icon="settings"></button></div></header>
+    <main id="main" tabindex="-1"><div class="initial-loading">Opening your workspace…</div></main>
+    <footer class="page-footer"><span>Whole-recording classification · one tracked person</span><span>Keep the context. Review the pose.</span></footer>
+  </div>
+  <dialog id="runtime-dialog" aria-labelledby="runtime-title"><div class="dialog-header"><div><span class="eyebrow">LOCAL ENVIRONMENT</span><h2 id="runtime-title">Models & runtime</h2></div><button class="icon-button" data-action="close-dialog" aria-label="Close environment details">×</button></div><div id="runtime-detail"></div></dialog>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

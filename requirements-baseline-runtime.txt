@@ -1,0 +1,7 @@
+# Local baseline CPU environment. Use scripts/setup_baseline_runtime.sh in WSL.
+-r requirements.txt
+-r requirements-app.txt
+-r requirements-pose.txt
+torchvision==0.24.1
+# MMPose requests this distribution; keep its cv2 version aligned with research.
+opencv-python==4.10.0.84
