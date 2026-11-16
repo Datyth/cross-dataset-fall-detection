@@ -16,6 +16,9 @@
 
 # Local environments, caches, build outputs and editor state.
 .venv/
+.venv*/
+.cache/
+.uploads/
 venv/
 env/
 __pycache__/

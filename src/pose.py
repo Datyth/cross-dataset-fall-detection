@@ -114,10 +114,12 @@ def _inferencer(cfg, device):
         det_cat_ids=0, device=device, show_progress=False)
 
 
-def extract_one(cfg, row, inferencer):
+def extract_one(cfg, row, inferencer, progress=None):
     fps = cfg["preprocess"]["fps"]
     tolerance = cfg["preprocess"]["timestamp_tolerance_s"]
     path = Path(row["source_path"])
+    if progress:
+        progress(0.03, "Đang đọc thông tin video")
     if path.suffix.lower() == ".zip":
         timestamps = urfd_timestamps(path, int(row["frame_count"]))
     else:
@@ -132,6 +134,8 @@ def extract_one(cfg, row, inferencer):
         timestamps = np.arange(len(timestamps), dtype=np.float64) / float(row["original_fps"])
         fallback = True
     grid, indices = resample_indices(timestamps, fps, tolerance)
+    if progress:
+        progress(0.08, "Đang lấy mẫu video theo baseline")
     n = len(grid)
     xy = np.zeros((n, 17, 2), np.float32)
     score = np.zeros((n, 17), np.float32)
@@ -145,9 +149,11 @@ def extract_one(cfg, row, inferencer):
     image_size = None
     last_target = -1
     batch_frames, batch_positions = [], []
+    processed = 0
+    total_samples = int(np.count_nonzero(indices >= 0))
 
     def flush():
-        nonlocal previous, gap, ambiguous, last_target
+        nonlocal previous, gap, ambiguous, last_target, processed
         if not batch_frames:
             return
         outputs = list(inferencer(batch_frames, batch_size=cfg["pose"]["inference_batch"],
@@ -176,6 +182,10 @@ def extract_one(cfg, row, inferencer):
                 valid_joint[i] = good
                 valid_frame[i] = bool(good.any())
             previous, gap = box, 0
+        processed += len(batch_frames)
+        if progress:
+            progress(0.08 + 0.76 * processed / max(total_samples, 1),
+                     f"Đang phân tích pose: {processed}/{total_samples} khung")
         batch_frames.clear(); batch_positions.clear()
 
     for source_i, (_, frame) in enumerate(_source_frames(row)):
@@ -190,6 +200,8 @@ def extract_one(cfg, row, inferencer):
     flush()
     if image_size is None:
         raise ValueError("No decoded image")
+    if progress:
+        progress(0.86, "Đang tạo các giai đoạn đánh giá")
     return dict(xy=xy, score=score, valid_joint=valid_joint, valid_frame=valid_frame,
                 timestamp=grid, image_size=image_size,
                 source_indices=indices, timestamp_fallback=np.array(fallback), ambiguous_frames=np.array(ambiguous))

@@ -1,0 +1,16 @@
+# Windows CPython 3.11 baseline webcam runtime (CPU build).
+torch==2.1.0
+torchvision==0.16.0
+numpy==1.26.4
+PyYAML==6.0.3
+requests==2.32.5
+scipy==1.16.3
+matplotlib==3.10.7
+opencv-python-headless==4.10.0.84
+opencv-python==4.10.0.84
+
+# Official OpenMMLab wheel for Windows CPython 3.11 + CPU PyTorch 2.1.
+mmcv @ https://download.openmmlab.com/mmcv/dist/cpu/torch2.1.0/mmcv-2.1.0-cp311-cp311-win_amd64.whl
+mmengine==0.10.7
+mmdet==3.3.0
+mmpose==1.3.2

@@ -69,6 +69,32 @@ The smoke test uses synthetic skeletons to check the model and loss path. The re
 
 ## Run the full pipeline
 
+## Real-time webcam app
+
+The repository includes a local browser app that uses `best_erm.pt` together
+with the benchmark's RTMDet person detector and RTMPose COCO-17 estimator.
+For the Windows CPU setup, install the compatible stack in `.venv311`:
+
+```powershell
+.\.venv311\Scripts\python.exe -m pip install torch==2.1.0+cpu torchvision==0.16.0+cpu --index-url https://download.pytorch.org/whl/cpu
+.\.venv311\Scripts\python.exe -m pip install wheel
+.\.venv311\Scripts\python.exe -m pip install --no-build-isolation chumpy==0.70
+.\.venv311\Scripts\python.exe -m pip install -r requirements-live.txt
+.\.venv311\Scripts\python.exe -m src.live_app
+```
+
+`requirements-live.txt` pins the official MMCV wheel for Windows, Python 3.11,
+and CPU PyTorch 2.1. The pose checkpoint files download on first launch into
+`data/model_weights/`. Open `http://127.0.0.1:8765` and allow camera access.
+Use `--checkpoint PATH` to select another fall classifier. The webcam stream
+is processed locally; the browser sends sampled
+JPEG frames to the local Python server. A result appears after collecting 64
+frames, then refreshes as the temporal window advances. Camera inference speed
+depends on hardware. This research baseline is not a certified safety system.
+
+The browser camera API requires localhost or HTTPS. The web app listens only on
+`127.0.0.1` by default.
+
 Full experiments additionally require dataset access, sufficient disk space, a CUDA-enabled PyTorch installation and the pose dependencies in [requirements-pose.txt](requirements-pose.txt). The recorded environment used CUDA 12.8. **MMCV requires compiled ops compatible with the installed PyTorch/CUDA stack**; a generic pip installation alone may require building those ops. See the [recorded runtime](benchmarks/erm/environment.json).
 
 Run commands from the repository root. Paths and pinned pose-checkpoint URLs are in [config.yaml](config.yaml).
