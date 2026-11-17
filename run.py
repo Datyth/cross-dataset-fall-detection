@@ -48,6 +48,11 @@ def main():
     repair.add_argument("--seeds", default="42,123,2026")
     repair.add_argument("--resume", action="store_true", help="verify and skip already corrected runs")
     repair.add_argument("--dry-run", action="store_true", help="validate old artifacts and print recovery plans without writing")
+    predict = sub.add_parser("predict-video", help="classify one RGB video with a saved checkpoint")
+    predict.add_argument("--video", required=True, help="path to an RGB video")
+    predict.add_argument("--checkpoint", required=True, help="path to best_erm.pt or a corrected swad.pt")
+    predict.add_argument("--device", default="cuda")
+    predict.add_argument("--output", help="write an annotated MP4 with person box, skeleton and prediction")
     r = sub.add_parser("report")
     r.add_argument("--force", action="store_true")
     r.add_argument("--check-only", action="store_true", help="validate all checkpoints without target inference or output writes")
@@ -95,6 +100,9 @@ def main():
         for fold in folds:
             for seed in [int(x) for x in args.seeds.split(",")]:
                 print(json.dumps(repair_swad(cfg, fold, seed, args.resume, args.dry_run)), flush=True)
+    elif args.command == "predict-video":
+        from src.predict import predict_video
+        predict_video(cfg, args.video, args.checkpoint, args.device, args.output)
     elif args.command == "report":
         from src.report import report, report_preflight
         if args.check_only:

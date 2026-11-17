@@ -1,0 +1,14 @@
+protocol: pdi-pilot-v1
+data_dir: research/data
+results_dir: research/results/pdi
+device: cuda
+max_epochs: 30
+seeds: [42, 123, 2026]
+lambda_pred: 0.1
+lambda_pdi: 0.1
+ema_decay: 0.99
+coordinate_noise_std: 0.01
+joint_drop_probability: 0.1
+aux_batch_size: 8
+min_past_valid_frames: 36
+min_future_valid_frames: 12
