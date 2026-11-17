@@ -58,6 +58,8 @@ We are testing whether learning to predict **future skeleton motion** helps the 
 
 The first paired pilot finished on CAUCAFall with seed 42 and 30 epochs per method. **P4 reached Fall F1 0.745 and AP 0.812**, versus **0.673 and 0.785 for P3**. This is exploratory evidence from one domain and one seed. Its training budget differs from E1's, so it does not establish an improvement over the E1 baseline. Full local results are in `research/results/pdi/paired/caucafall/42/REPORT.md`.
 
+The full P3/P4 comparison runs four target domains and three seeds with each run's optimizer budget matched to E1. Run or resume it with `bash scripts/run_pdi_full.sh`. Logs and the final report go to `research/results/pdi_full/`.
+
 ## Quick start
 
 Use **Python 3.11**. The CPU checks below run without downloading datasets, model weights or the pose stack.
